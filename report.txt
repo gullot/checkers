@@ -1,0 +1,169 @@
+Halfway Progress Report
+Thomas Gullo
+
+class OutofTurn(Exception):
+    """exception class for when its not your turn!"""
+    pass
+
+class InvalidSquare(Exception):
+    """exception class for invalid square input"""
+    pass
+
+class Piece:
+    """class to represent a piece on the board. Planning to make king piece and triple king piece subclasses
+    This will need to contain data on the color and type of piece for access to other methods.
+    as such, will need get methods for each"""
+
+class King(Piece):
+    """King objects are subclasses of Piece objects that have different move capabilities.
+    This will need the same get methods as parent class"""
+
+class TripleKing(Piece):
+    """TripleKing objects are subclasses of Piece objects that have different move capabilities.
+    This will need the same get methods as parent class"""
+
+class Checkers:
+    """a class to represent a checkers board and initialize all the pieces and contains the players as well.
+    This must initialize the board, and i plan to have the information in a dictionary for ease of access.
+    The key will be the tuple coordinate, and the key will be what is on the square (either None or a Piece
+    object."""
+
+    This will also need to initialize whos turn it is (black).
+
+    I will add a turn
+
+    def turn_switch(self):
+        """method to change who's turn it is"""
+        if self._whos_turn == 'Black':
+            return self._whos_turn == 'White'
+        else:
+            return self._whos_turn == 'Black'
+
+    def get_row1(self):
+        """get method for rows"""
+        return self._row1
+    def get_row2(self):
+        """get method for rows"""
+        return self._row2
+    def get_row3(self):
+        """get method for rows"""
+        return self._row3
+    def get_row4(self):
+        """get method for rows"""
+        return self._row4
+    def get_row5(self):
+        """get method for rows"""
+        return self._row5
+    def get_row6(self):
+        """get method for rows"""
+        return self._row6
+    def get_row7(self):
+        """get method for rows"""
+        return self._row7
+    def get_row8(self):
+        """get method for rows"""
+        return self._row8
+
+    def get_board(self):
+        """get method for the board dictionary"""
+        return self._board
+
+    def create_player(self, player_name, piece_color):
+        """creates a player with their name and color, black or white"""
+        #assumes piece color is properly chosen 'Black' or 'White'
+        self._player_name = player_name
+        self._piece_color = piece_color
+
+        #needs a way to relate directly to pieces of the color chosen
+
+    def play_game(self, player_name, starting_square_location, destination_square_location):
+        """takes a players name, their current location and their destination location in tuple form"""
+        # needs to confirm that the input starting location includes their color and that their destination is valid
+
+        #will need to access the board dictionary via get_board
+        #will need to validate move is ok via helper method to validate if moves are valid by the rules of the game
+        #will need to confirm if a piece or more shall be removed from the game following the move (possibly via same helper method above)
+
+        #will update the board dictionary directly
+        #will need a way to update the board that is printed for clarity in addition to the dictionary
+
+        #will need to keep track of whos turn it is. Perhaps having a toggle on the play_game method at the end of method
+        #should send the captured pieces to the Player object to keep track of captured pieces
+
+        #for any piece of opposite color reaching the opposite side, the Piece object must be removed and the appropriate
+        #subclass of Piece should be swapped in.
+
+
+    def get_checker_details(self, square_location):
+        """takes a square location and returns checker details present on that square"""
+        if square_location[0] > 7 or square_location[1] > 7:
+            raise InvalidSquare
+
+        if self.get_board[square_location] == None:
+            return None
+
+        if self.get_board[square_location].get_color == 'Black' and self.get_board[square_location].get_piece_type == 'Standard':
+            return 'Black'
+
+        #and so on for each possibility
+
+    def print_board(self):
+        """takes no parameters and prints the board in the form of an array"""
+        print(self.get_row1())
+        print(self.get_row2())
+        print(self.get_row3())
+        print(self.get_row4())
+        print(self.get_row5())
+        print(self.get_row6())
+        print(self.get_row7())
+        print(self.get_row8())
+
+    def game_winner(self):
+        """takes no parameters and tells you the name of the player who won the game"""
+        #this method should take no parameters and return
+
+# **Player:**
+#
+# Player object represents the player in the game. It is initialized with player_name and checker_color that the player has chosen. The parameter piece_color is a string of value "Black" or "White".
+#
+# * get_king_count - takes no parameter, returns the number of king pieces that the player has
+# * get_triple_king_count - takes no parameter, returns the number of triple king pieces that the player has
+# * get_captured_pieces_count - takes no parameter, returns the number of opponent pieces that the player has captured
+#
+# In addition to your file containing the code for the above classes, **you must also submit a file that contains unit tests for your classes.  It must have at least five unit tests and use at least two different assert functions.
+#
+# Your files must be named **CheckersGame.py** and **CheckersGameTester.py**
+#
+# For example, your classes will be used as below:
+#
+# game = Checkers()
+# Player1 = game.create_player("Adam", "White")
+#
+# Player2 = game.create_player("Lucy", "Black")
+#
+# game.play_game("Lucy", (5, 6), (4, 7))
+#
+# game.play_game("Adam", (2,1), (3,0))
+#
+# game.get_checker_details((3,1))
+#
+# Player1.get_captured_pieces_count()
+
+class Player:
+    """represents a player in the game that has a name and a color"""
+
+    def __init__(self, player_name, checker_color):
+        """init method that takes input for their name and chosen color"""
+
+        self._player_name = player_name
+        self._checker_color = checker_color
+        self._captured_pieces = 0
+
+    def get_king_count(self):
+        """takes no parameters and returns the number of kings that player has"""
+
+    def get_triple_king_count(self):
+        """takes no parameters and returns the number of triple kings that player has"""
+
+    def get_captured_pieces_count(self):
+        """takes no parameters and returns the number of pieces that player has captured"""
